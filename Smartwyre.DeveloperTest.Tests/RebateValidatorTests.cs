@@ -203,7 +203,7 @@ public class RebateValidatorTests
     [Theory]
     [InlineData(0)]
     [InlineData(-0.1)]
-    [InlineData(1.1)] // Over 100%
+    [InlineData(1.1)]
     public void IsValid_FixedRateRebate_InvalidPercentage_ReturnsFalse(decimal percentage)
     {
         // Arrange

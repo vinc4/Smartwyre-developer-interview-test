@@ -18,7 +18,6 @@ public class RepositoryTests
 
         // Assert
         Assert.NotNull(result);
-        // Note: Since DataStore returns empty objects, we can only test that it doesn't return null
     }
 
     [Fact]
@@ -46,6 +45,6 @@ public class RepositoryTests
 
         // Assert
         Assert.NotNull(result);
-        // Note: Since DataStore returns empty objects, we can only test that it doesn't return null
+
     }
 }

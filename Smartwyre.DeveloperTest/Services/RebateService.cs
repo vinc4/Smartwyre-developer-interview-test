@@ -22,21 +22,17 @@ public class RebateService : IRebateService
 
     public CalculateRebateResult Calculate(CalculateRebateRequest request)
     {
-        // 1. Data Access
         var rebate = _rebateRepository.GetRebate(request.RebateIdentifier);
         var product = _productRepository.GetProduct(request.ProductIdentifier);
 
-        // 2. Validation
         if (!_validator.IsValid(rebate, product, request))
         {
             return new CalculateRebateResult { Success = false };
         }
 
-        // 3. Calculation
         var calculator = _calculatorFactory.GetCalculator(rebate.Incentive);
         var rebateAmount = calculator.Calculate(rebate, product, request);
 
-        // 4. Storage
         _rebateRepository.StoreCalculationResult(rebate, rebateAmount);
 
         return new CalculateRebateResult { Success = true };
